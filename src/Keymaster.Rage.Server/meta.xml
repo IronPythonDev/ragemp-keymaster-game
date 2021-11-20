@@ -1,0 +1,5 @@
+﻿<meta>
+	<info name="Core" description="Core" />
+
+	<script src="./Keymaster.Rage.Server.dll" />
+</meta>

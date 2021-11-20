@@ -1,0 +1,42 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Keymaster.Rage.Shared\Keymaster.Rage.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Bootstrapper">
+      <HintPath>..\Libraries\Bootstrapper.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="meta.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <Target Name="CopyBuildFiles" AfterTargets="build">
+    <ItemGroup>
+      <AllOutputBuildFiles Include="$(OutputPath)\*.*" />
+    </ItemGroup>
+
+    <Copy SourceFiles="@(AllOutputBuildFiles)" DestinationFolder="../../rage/dotnet/resources/core/" SkipUnchangedFiles="false" />
+  </Target>
+
+  <Target Name="CopyPublishFiles" AfterTargets="publish">
+    <ItemGroup>
+      <AllOutputBuildFiles Include="$(OutputPath)\publish\*.*" />
+    </ItemGroup>
+
+    <Copy SourceFiles="@(AllOutputBuildFiles)" DestinationFolder="../../rage/dotnet/resources/core/" SkipUnchangedFiles="false" />
+  </Target>
+</Project>

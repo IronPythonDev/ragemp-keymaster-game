@@ -1,0 +1,10 @@
+.vs
+bin
+obj
+rage/client_packages
+rage/dotnet/resources
+rage/dotnet/server_exceptions.txt
+rage/dotnet/server_logs.txt
+rage/maps
+rage/packages
+rage/linux_x64.tar.gz

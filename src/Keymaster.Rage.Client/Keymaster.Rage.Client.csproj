@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="rage-sharp">
+      <HintPath>..\Libraries\rage-sharp.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <Target Name="CopyCSFiles" AfterTargets="build">
+    <ItemGroup>
+      <AllOutputCSFiles Include="./**/*.cs" Exclude="./obj/**/*.*;./bin/**/*.*" />
+	  <AllSharedCSFiles Include="../Keymaster.Rage.Shared/Client/**/*.cs" Exclude="../Keymaster.Rage.Shared/obj/**/*.*;../Keymaster.Rage.Shared/bin/**/*.*" />
+	  <AllCEFFiles Include="../Keymaster.Rage.Client.CEF/**/*.*" />
+    </ItemGroup>
+
+    <Copy SourceFiles="@(AllOutputCSFiles)" DestinationFiles="@(AllOutputCSFiles->'../../rage/client_packages/cs_packages/%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="false" />
+	  <Copy SourceFiles="@(AllSharedCSFiles)" DestinationFiles="@(AllSharedCSFiles->'../../rage/client_packages/cs_packages/Shared/%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="false" />
+	  <Copy SourceFiles="@(AllCEFFiles)" DestinationFiles="@(AllCEFFiles->'../../rage/client_packages/cef_packages/%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="false" />
+  </Target>
+</Project>
