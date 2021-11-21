@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Run Rage Server": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Users\\Vlad\\Desktop\\rage-cd-key-game\\rage\\ragemp-server.exe",
+      "workingDirectory": "C:\\Users\\Vlad\\Desktop\\rage-cd-key-game\\rage",
+      "nativeDebugging": true
+    }
+  }
+}

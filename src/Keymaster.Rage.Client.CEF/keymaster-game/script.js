@@ -10,7 +10,7 @@ let settings = {
     baseSpeed: 2,
     scoreWin: 50,
     scoreLose: -50,
-    maxTime: 10000,
+    maxTime: 30000,
     maxMistake: 5,
     speedIncrement: 1,
 };
@@ -259,6 +259,10 @@ $(window).keydown((event) => {
 
 $('#keymaster-info').on('hide.bs.modal', () => {
     if (gameSuccess !== null) {
+        if (mp != null) {
+            mp.trigger('Browser:Close', window.browserId);
+            mp.trigger('Client:Game:KeyMaster:SendScoreToServer', score);
+        }
         if (gameSuccess) {
             console.log("success")
         } else {

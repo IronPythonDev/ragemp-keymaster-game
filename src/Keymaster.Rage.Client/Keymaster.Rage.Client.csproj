@@ -1,8 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Keymaster.Rage.Shared\Keymaster.Rage.Shared.csproj" />
+  </ItemGroup>
 
   <ItemGroup>
     <Reference Include="rage-sharp">
@@ -13,12 +17,15 @@
   <Target Name="CopyCSFiles" AfterTargets="build">
     <ItemGroup>
       <AllOutputCSFiles Include="./**/*.cs" Exclude="./obj/**/*.*;./bin/**/*.*" />
-	  <AllSharedCSFiles Include="../Keymaster.Rage.Shared/Client/**/*.cs" Exclude="../Keymaster.Rage.Shared/obj/**/*.*;../Keymaster.Rage.Shared/bin/**/*.*" />
+	  <AllSharedCSFiles Include="../Keymaster.Rage.Shared/Server/**/*.cs;../Keymaster.Rage.Shared/Enums/**/*.cs" Exclude="../Keymaster.Rage.Shared/obj/**/*.*;../Keymaster.Rage.Shared/bin/**/*.*" />
 	  <AllCEFFiles Include="../Keymaster.Rage.Client.CEF/**/*.*" />
     </ItemGroup>
 
+	<RemoveDir Directories="../../rage/client_packages/cs_packages" />
+	<RemoveDir Directories="../../rage/client_packages/cef_packages" />
+	
     <Copy SourceFiles="@(AllOutputCSFiles)" DestinationFiles="@(AllOutputCSFiles->'../../rage/client_packages/cs_packages/%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="false" />
-	  <Copy SourceFiles="@(AllSharedCSFiles)" DestinationFiles="@(AllSharedCSFiles->'../../rage/client_packages/cs_packages/Shared/%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="false" />
-	  <Copy SourceFiles="@(AllCEFFiles)" DestinationFiles="@(AllCEFFiles->'../../rage/client_packages/cef_packages/%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="false" />
+	<Copy SourceFiles="@(AllSharedCSFiles)" DestinationFiles="@(AllSharedCSFiles->'../../rage/client_packages/cs_packages/Shared/%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="false" />
+	<Copy SourceFiles="@(AllCEFFiles)" DestinationFiles="@(AllCEFFiles->'../../rage/client_packages/cef_packages/%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="false" />
   </Target>
 </Project>
