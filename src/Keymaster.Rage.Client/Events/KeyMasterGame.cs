@@ -19,8 +19,6 @@ namespace Keymaster.Rage.Client.Events
                 Keymaster.Rage.Shared.Server.KeyMasterGameEvents.SendScore(score);
 
                 RAGE.Chat.Output($"Your score: {score}");
-
-                RAGE.Elements.Player.LocalPlayer.SetMoney(RAGE.Elements.Player.LocalPlayer.GetMoney() + score);
             }
             catch (Exception ex)
             {

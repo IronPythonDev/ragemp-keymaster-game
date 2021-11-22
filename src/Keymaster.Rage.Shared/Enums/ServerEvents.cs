@@ -1,6 +1,4 @@
-﻿using System.ComponentModel;
-
-namespace Keymaster.Rage.Shared.Enums
+﻿namespace Keymaster.Rage.Shared.Enums
 {
     public class ServerEvents
     {

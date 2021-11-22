@@ -19,8 +19,6 @@
 
         public void Open()
         {
-            if (HtmlWindow == null) return;
-
             HtmlWindow.Active = true;
 
             Focus();
@@ -28,26 +26,14 @@
 
         public void Close()
         {
-            if (HtmlWindow == null) return;
-
             HtmlWindow.Active = false;
             HtmlWindow.Destroy();
             UnFocus();
         }
 
-        public void Focus()
-        {
-            if (HtmlWindow == null) return;
+        public void Focus() => RAGE.Ui.Cursor.Visible = true;
 
-            RAGE.Ui.Cursor.Visible = true;
-        }
-
-        public void UnFocus()
-        {
-            if (HtmlWindow == null) return;
-
-            RAGE.Ui.Cursor.Visible = false;
-        }
+        public void UnFocus() => RAGE.Ui.Cursor.Visible = false;
 
         public void ExecuteJS(string code) => HtmlWindow?.ExecuteJs(code);
     }

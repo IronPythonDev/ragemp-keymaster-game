@@ -5,12 +5,11 @@ namespace Keymaster.Rage.Server.Systems
 {
     public partial class KeyMasterGame
     {
-        Marker Marker { get; set; }
         ColShape ColShape { get; set; }
 
         public KeyMasterGame()
         {
-            Marker = NAPI.Marker.CreateMarker(
+            NAPI.Marker.CreateMarker(
                 1, 
                 new Vector3(-418.60727, 1148.3651, 324.85483), 
                 new Vector3(), 
