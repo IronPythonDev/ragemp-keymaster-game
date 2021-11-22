@@ -14,7 +14,7 @@ namespace Keymaster.Rage.Server.Systems
 
                 // Здесь вы можете сохранять все в БД
 
-                ChatEvents.PushMessage(player, $"You have been credited with {score} PGD");
+                ChatEvents.PushMessage(player, $"You have been credited with {score} PGD");//Тригерим событие Client:Chat:Push
             }
             catch (Exception ex)
             {

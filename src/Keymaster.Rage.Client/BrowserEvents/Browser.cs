@@ -9,6 +9,7 @@ namespace Keymaster.Rage.Client.BrowserEvents
             RAGE.Events.Add("Browser:Close", CloseBrowser);
         }
 
+        // Просто удаляем браузер, в аргументы нужно передать ИД браузера который можно получить через window.browserId
         private void CloseBrowser(object[] args)
         {
             try

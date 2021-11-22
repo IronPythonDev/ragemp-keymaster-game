@@ -16,8 +16,10 @@ namespace Keymaster.Rage.Client.Events
             {
                 if (!int.TryParse($"{args[0]}", out int score)) return;
 
+                // Тригерим серверный ивент Server:Game:KeyMaster:Score:Process
                 Keymaster.Rage.Shared.Server.KeyMasterGameEvents.SendScore(score);
 
+                // Выводим в чат счет
                 RAGE.Chat.Output($"Your score: {score}");
             }
             catch (Exception ex)
@@ -26,6 +28,7 @@ namespace Keymaster.Rage.Client.Events
             }
         }
 
+        // Создаём и открываем игру
         private void OpenKeyMasterGame(object[] args)
         {
             try
